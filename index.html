@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Száz Sör Száz Perc Alatt</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	
+	<style type="text/css">
+	
+	
+		body,html{
+			background-color: #f2f2f2 ;
+			height: 100%;
+		}
+		h1{
+			margin: 0;
+			text-align: center;
+			padding: 2% 0;
+		}
+		#middle {
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  /* bring your own prefixes */
+		  transform: translate(-50%, -50%);
+		  text-align: center;
+		}
+		article{
+			padding: 10px;
+			height: 100%;
+
+	
+		}
+		.row{
+			margin: 0;
+			padding: 0;
+		}
+		section{
+			height: 80%;
+		}
+		.lg-container{
+			padding: 15px;
+			background-color: #fff;
+			height: 100%;
+			position: relative;
+			border: 1px solid #bbb;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+	
+		}
+
+	</style>
+	
+</head>
+<body  >
+    <head  class='row'>
+    	<h1>Száz Sör Száz Perc Alatt </h1>
+	</head>
+	<section  class='row'>
+			<article class="col-sm-4">
+				<div class="lg-container">
+					<div id="middle">
+						<div>Eddig elfogyasztott:<br><span id="shots">0</span>db</div>
+						<div>Eddig elfogyasztott szesz<br><span id="alcohol">0</span> l </div>
+					</div>
+				</div>		
+			</article>
+			<article class="col-sm-4">
+				<div class="lg-container">
+					<div id="middle" >Következő:<br/><span id="remaining">60</span></div>
+				</div>
+			</article>
+			<article class="col-sm-4">
+				<div class="lg-container">
+					<button type="button" class="btn btn-danger"  onclick="vomit('kyle')">Kyle</button>
+					<button type="button" class="btn btn-warning" onclick="vomit('pi')">Pi</button>
+					<button type="button" class="btn btn-default" onclick="vomit('other')">Más</button>
+					<br/>
+					<br/>
+					<div class="panel panel-danger" id="kyle">
+					  <div class="panel-heading">Kyle</div>
+					</div>
+					<div class="panel panel-warning" id="pi">
+					    <div class="panel-heading">Pi</div>
+					</div>
+					<div class="panel panel-default" id="other">
+					    <div class="panel-heading">Más</div>
+					</div>
+				</div>		
+			</article>
+	
+		</section>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		setInterval(function(){
+			var remaining =  Number($('#remaining').html());
+				if(remaining == 0){
+					remaining = 60;
+					$('#shots').html((Number($('#shots').html())+1) );
+					$('#alcohol').html((Number($('#alcohol').html())+0.4) );
+				}
+				remaining--;
+				$('#remaining').html(remaining)
+			}, 1000);
+		$('remaining')
+
+		function vomit(who){
+			$('#'+who).append('<div class="panel-body">'+$('#shots').html()+'. Perc &#8594; '+$('#alcohol').html()+' l</div>');
+		}
+	</script>
+
+</body>
+</html>
